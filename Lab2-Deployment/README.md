@@ -93,12 +93,12 @@ kubectl get pods
 
 
 
-## 8. Test the application
+## 7. Test the application
 
 An application load balancer is also deployed. Identify the address of the alb via the command.
 
 ```
-export ALB=$(kubectl get ingress -o wide | grep colorgate | awk '{print $3}')
+export LB=$(kubectl get svc -o wide | grep colorgateway-service | awk '{print $4}')
 
 ```
 
@@ -106,7 +106,7 @@ export ALB=$(kubectl get ingress -o wide | grep colorgate | awk '{print $3}')
 Next, paste the following to request the colorgateway service. Do note that the alb might take a few minutes to become active.
 
 ```
-while [ 1 ]; do  curl -s --connect-timeout 2 $ALB:/color;echo;sleep 1; done
+while [ 1 ]; do  curl -s --connect-timeout 2 $LB:/color;echo;sleep 1; done
 
 ```
 
