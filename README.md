@@ -29,7 +29,7 @@ At the microservice level the application looks like this:
 
 [img1]:https://github.com/tohwsw/kubernetes-basics/blob/master/Lab1-Getting-Started-with-EKS/img/microservicesapp.png
 
-They shall be deployed using AWS EKS, which makes it easy for you to run Kubernetes on AWS without needing to install and operate your own Kubernetes clusters. We shall deploy 1 instances of Gateway container and 2 instances of ColorTeller. 
+They shall be deployed using AWS EKS, which makes it easy for you to run Kubernetes on AWS without needing to install and operate your own Kubernetes clusters. We shall deploy 2 instances of Gateway container and 2 instances of ColorTeller. 
 
 
 **Note**: 

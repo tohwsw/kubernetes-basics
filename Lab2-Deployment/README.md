@@ -63,7 +63,7 @@ docker push $AWS_ACCOUNT_ID.dkr.ecr.ap-southeast-1.amazonaws.com/colorgateway:la
 To deploy the app, download colorapp.yml and and deploy it.
 
 ```
-curl -O https://raw.githubusercontent.com/tohwsw/aws-kubernetes-basics/Lab2-AppMesh-with-ColorTeller/colorapp.yml
+curl -O https://raw.githubusercontent.com/tohwsw/aws-kubernetes-basics/Lab2-Deployment/colorapp.yml
 
 ```
 
