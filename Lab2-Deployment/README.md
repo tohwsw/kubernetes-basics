@@ -113,7 +113,7 @@ while [ 1 ]; do  curl -s --connect-timeout 2 $LB:/color;echo;sleep 1; done
 You should see the default color white is returned on each request.
 
 
-## 9. Lab Cleanup
+## 8. Lab Cleanup
 
 To clean up the lab, please delete using the following command
 
@@ -122,7 +122,7 @@ eksctl delete cluster --name=$CLUSTER --region=ap-southeast-1
 
 ```
 
-## 10. Optional Labs
+## 9. Optional Labs
 
 There are more labs hosted at https://eksworkshop.com/. Do check them out!
 
