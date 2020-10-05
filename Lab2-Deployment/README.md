@@ -122,12 +122,15 @@ kubectl apply -f colorapp.yml
 ```
 
 ```
-kubectl run colorteller --image='<$AWS_ACCOUNT_ID>.dkr.ecr.ap-southeast-1.amazonaws.com/colorteller:latest'
+kubectl create deployment colorteller --image='284245693010.dkr.ecr.ap-southeast-1.amazonaws.com/colorteller:latest'
+kubectl set env deployment/colorteller SERVER_PORT=9080
 kubectl scale --replicas=2 deployment/colorteller
 kubectl expose deployment colorteller --port=9080 --target-port=9080
-kubectl run colorgateway --image='<$AWS_ACCOUNT_ID>.dkr.ecr.ap-southeast-1.amazonaws.com/colorgateway:latest'
+kubectl create deployment colorgateway --image='284245693010.dkr.ecr.ap-southeast-1.amazonaws.com/colorgateway:latest'
+kubectl set env deployment/colorgateway SERVER_PORT=9080 'COLOR_TELLER_ENDPOINT=colorteller.default.svc.cluster.local:9080' 'TCP_ECHO_ENDPOINT=colorteller.default.svc.cluster.local:9080'
 kubectl scale --replicas=2 deployment/colorgateway
 kubectl expose deployment colorgateway --port=80 --target-port=9080 --type=LoadBalancer
+
 ```
 
 ## 9. Lab Cleanup
