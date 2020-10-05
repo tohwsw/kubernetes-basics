@@ -112,8 +112,25 @@ while [ 1 ]; do  curl -s --connect-timeout 2 $LB:/color;echo;sleep 1; done
 
 You should see the default color white is returned on each request.
 
+## 8. Optional
 
-## 8. Lab Cleanup
+You can remove the deployment and try out the deployment using imperative commands
+
+```
+kubectl apply -f colorapp.yml
+
+```
+
+```
+kubectl run colorteller --image='<$AWS_ACCOUNT_ID>.dkr.ecr.ap-southeast-1.amazonaws.com/colorteller:latest'
+kubectl scale --replicas=2 deployment/colorteller
+kubectl expose deployment colorteller --port=9080 --target-port=9080
+kubectl run colorgateway --image='<$AWS_ACCOUNT_ID>.dkr.ecr.ap-southeast-1.amazonaws.com/colorgateway:latest'
+kubectl scale --replicas=2 deployment/colorgateway
+kubectl expose deployment colorgateway --port=80 --target-port=9080 --type=LoadBalancer
+```
+
+## 9. Lab Cleanup
 
 To clean up the lab, please delete using the following command
 
@@ -122,7 +139,7 @@ eksctl delete cluster --name=$CLUSTER --region=ap-southeast-1
 
 ```
 
-## 9. Optional Labs
+## 10. Optional Labs
 
 There are more labs hosted at https://eksworkshop.com/. Do check them out!
 
